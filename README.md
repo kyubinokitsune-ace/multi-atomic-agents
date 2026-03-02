@@ -1,4 +1,4 @@
-# gpt-multi-atomic-agents
+#  multi-atomic-agents
 A simple dynamic multi-agent framework based on [atomic-agents](https://github.com/BrainBlend-AI/atomic-agents) and [Instructor](https://github.com/instructor-ai/instructor). Uses the power of [Pydantic](https://docs.pydantic.dev) for data and schema validation and serialization.
 
 > **_NOTE:_** The `!! framework is at an early stage !!` - breaking changes will be indicated by increasing the *minor* version (major is still at zero).
@@ -19,32 +19,32 @@ A simple dynamic multi-agent framework based on [atomic-agents](https://github.c
 - usage:
   1. as a library
   2. OR run out-of-the-box as a REST API, accepting Agents from the client
-    - there is a simple [TypeScript framework](https://github.com/mrseanryan/gpt-multi-atomic-agents/tree/master/clients/gpt-maa-ts), for writing Agent-based TypeScript clients of the REST API
+    - there is a simple [TypeScript framework](https://github.com/kyubinokitsune-ace/ multi-atomic-agents/tree/master/clients/gpt-maa-ts), for writing Agent-based TypeScript clients of the REST API
   3. OR as a command line chat-loop
 
-[url_repo]: https://github.com/mrseanryan/gpt-multi-atomic-agents
+[url_repo]: https://github.com/kyubinokitsune-ace/ multi-atomic-agents
 [url_semver_org]: https://semver.org/
 
 [![MIT License][img_license]][url_license]
 [![Supported Python Versions][img_pyversions]][url_pyversions]
-[![gpt-multi-atomic-agents][img_version]][url_version]
+[![ multi-atomic-agents][img_version]][url_version]
 
 [![PyPI Releases][img_pypi]][url_pypi]
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/gpt-multi-atomic-agents.svg)](https://pypi.org/project/gpt-multi-atomic-agents)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/ multi-atomic-agents.svg)](https://pypi.org/project/ multi-atomic-agents)
 
 [img_license]: https://img.shields.io/badge/License-MIT-blue.svg
-[url_license]: https://github.com/mrseanryan/gpt-multi-atomic-agents/blob/master/LICENSE
+[url_license]: https://github.com/kyubinokitsune-ace/ multi-atomic-agents/blob/master/LICENSE
 
-[url_version]: https://pypi.org/project/gpt-multi-atomic-agents/
+[url_version]: https://pypi.org/project/ multi-atomic-agents/
 
-[img_version]: https://img.shields.io/static/v1.svg?label=SemVer&message=gpt-multi-atomic-agents&color=blue
+[img_version]: https://img.shields.io/static/v1.svg?label=SemVer&message= multi-atomic-agents&color=blue
 [url_version]: https://pypi.org/project/bumpver/
 
 [img_pypi]: https://img.shields.io/badge/PyPI-wheels-green.svg
-[url_pypi]: https://pypi.org/project/gpt-multi-atomic-agents/#files
+[url_pypi]: https://pypi.org/project/ multi-atomic-agents/#files
 
-[img_pyversions]: https://img.shields.io/pypi/pyversions/gpt-multi-atomic-agents.svg
-[url_pyversions]: https://pypi.python.org/pypi/gpt-multi-atomic-agents
+[img_pyversions]: https://img.shields.io/pypi/pyversions/ multi-atomic-agents.svg
+[url_pyversions]: https://pypi.python.org/pypi/ multi-atomic-agents
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K73ALBJ)
 
@@ -58,7 +58,7 @@ The framework is generic and allows agents to be defined in terms of a name, des
 
 The agents communicate indirectly using a blackboard. The language is composed of (Function or GraphQL mutation) calls: each agent specifies what it understands as input, and what calls it is able to generate. Each agent can be configured to understand a subset of the output of the other agents. In this way, the agents can understand each other's output and collaborate together.
 
-![System overview](https://raw.githubusercontent.com/mrseanryan/gpt-multi-atomic-agents/master/images/diagram-Multi-LLM-based-Agent-collaboration-via-Dynamic-Router-GraphQL-context.jpg)
+![System overview](https://raw.githubusercontent.com/kyubinokitsune-ace/ multi-atomic-agents/master/images/diagram-Multi-LLM-based-Agent-collaboration-via-Dynamic-Router-GraphQL-context.jpg)
 
 A `Dynamic Router Orchestrator` takes the user prompt and generates an agent execution plan. This is an LLM-backed Orchestrator which builds an execution plan to dynamically route the user prompt to the relevant agents.
 
@@ -68,7 +68,7 @@ The Orchestrator rewrites the user prompt to suit each agent, which improves qua
 
 > **_NOTE:_** Optionally, the Orchestrator can be run separately, allowing for human-in-the-loop feedback on the execution plan that the Orchestrator generated. In this way, the user can collaborate more with the Orchestrator, before the generative agents are actually executed.
 
-> **_NOTE:_** An agent is serializable (basically a JSON document), so Agents can be imported, exported and even edited by clients as needed. For example 'dynamic' Custom Agents, see the [TypeScript client dynamic agents](https://github.com/mrseanryan/gpt-multi-atomic-agents/blob/master/clients/gpt-maa-ts/data-agents).
+> **_NOTE:_** An agent is serializable (basically a JSON document), so Agents can be imported, exported and even edited by clients as needed. For example 'dynamic' Custom Agents, see the [TypeScript client dynamic agents](https://github.com/kyubinokitsune-ace/ multi-atomic-agents/blob/master/clients/gpt-maa-ts/data-agents).
 
 - this allows the user to have more control over the output, and has the added benefit of reducing the *perceived* time taken to generate, since the user has intermediate interaction with the Orchestrator.
 
@@ -100,7 +100,7 @@ The overall flow occurs over 3 states:
 
 This diagram shows the overall flow, for Function Calls. The flow for GraphQL is essentially the same: instead of Function Calls, there are Mutations, and the user data would be in JSON format.
 
-![Plan-Generate-Execute Flow (Function Calls)](https://raw.githubusercontent.com/mrseanryan/gpt-multi-atomic-agents/master/images/plan-and-generate-flow.png)
+![Plan-Generate-Execute Flow (Function Calls)](https://raw.githubusercontent.com/kyubinokitsune-ace/ multi-atomic-agents/master/images/plan-and-generate-flow.png)
 
 ## Examples [Function Calls Based Approach]
 
@@ -176,7 +176,7 @@ def build_creature_agent():
 Notes about the Creature Creator agent:
 - this agent can only generate "AddCreature" function calls.
 - the agent also accepts (understands) previous "AddCreature" calls, so that it knows what has already been created.
-- additionally, this agent understands a subset of function calls from agents: here, it understands the "AddRelationship" function defined by `function_add_relationship`. This allows the agents to collaborate. See the [example source code](https://github.com/mrseanryan/gpt-multi-atomic-agents/tree/master/examples/sim_life) for more details.
+- additionally, this agent understands a subset of function calls from agents: here, it understands the "AddRelationship" function defined by `function_add_relationship`. This allows the agents to collaborate. See the [example source code](https://github.com/kyubinokitsune-ace/ multi-atomic-agents/tree/master/examples/sim_life) for more details.
 
 ## Examples [GraphQL Based Approach]
 
@@ -280,7 +280,7 @@ Notes about this agent:
 - the agent also accepts (understands) previous mutations calls, so that it knows what has already been created (`creature_mutations_graphql`).
 - additionally, this agent understands the shared GraphQL schema defined by `creatures_graphql` from the file "creature.graphql".
   - This array of GraphQL files can also be used to allow an Agent to understand a subset of the mutations output by other agents. This allows the agents to collaborate.
-  - See the [example source code](https://github.com/mrseanryan/gpt-multi-atomic-agents/tree/master/examples/sim_life_via_graphql) for more details.
+  - See the [example source code](https://github.com/kyubinokitsune-ace/ multi-atomic-agents/tree/master/examples/sim_life_via_graphql) for more details.
 
 ## Using the Agents in a chat loop
 
@@ -309,7 +309,7 @@ def run_chat_loop(given_user_prompt: str|None = None) -> list:
 
 > note: if `given_user_prompt` is not set, then `run_chat_loop()` will wait for user input from the keyboard
 
-See the [example source code](https://github.com/mrseanryan/gpt-multi-atomic-agents/tree/master/examples) for more details.
+See the [example source code](https://github.com/kyubinokitsune-ace/ multi-atomic-agents/tree/master/examples) for more details.
 
 ## Example Execution [Function Calls Based Approach]
 
@@ -340,7 +340,7 @@ Finally, the framework combines the resulting calls together and returns them to
 
 ### Example run via Function Call based agents:
 
-![example run - function calls](https://raw.githubusercontent.com/mrseanryan/gpt-multi-atomic-agents/master/images/screenshot-example-run.png)
+![example run - function calls](https://raw.githubusercontent.com/kyubinokitsune-ace/ multi-atomic-agents/master/images/screenshot-example-run.png)
 
 
 ## Example Execution [GraphQL Based Approach]
@@ -359,7 +359,7 @@ OUTPUT:
 
 ### Example run via GraphQL based agents:
 
-![example run - GraphQL](https://raw.githubusercontent.com/mrseanryan/gpt-multi-atomic-agents/master/images/screenshot-example-run.graphql.png)
+![example run - GraphQL](https://raw.githubusercontent.com/kyubinokitsune-ace/ multi-atomic-agents/master/images/screenshot-example-run.graphql.png)
 
 ## Setup
 
@@ -392,7 +392,7 @@ source ~/.zprofile
 
 ## Usage
 
-gpt-multi-atomic-agents can be used in three ways:
+ multi-atomic-agents can be used in three ways:
 
 1 - as a framework for your application or service
 2 - as a REST API, where a client provides the agents and user prompts
@@ -400,7 +400,7 @@ gpt-multi-atomic-agents can be used in three ways:
 
 ### 1. Usage as a framework (library)
 
-See the [example source code](https://github.com/mrseanryan/gpt-multi-atomic-agents/tree/master/examples) for more details.
+See the [example source code](https://github.com/kyubinokitsune-ace/ multi-atomic-agents/tree/master/examples) for more details.
 
 ### 2. Usage as REST API (with Swagger examples):
 
@@ -422,7 +422,7 @@ The available REST methods:
 
 There is a simple TypeScript framework, for writing Agent-based TypeScript clients of the REST API.
 
-For an example with simple Agents, see the [TypeScript Framework README](https://github.com/mrseanryan/gpt-multi-atomic-agents/tree/master/clients/gpt-maa-ts) and the [TypeScript Example Agents](https://github.com/mrseanryan/gpt-multi-atomic-agents/tree/master/clients/gpt-maa-ts/src/test_gpt_maa_client.ts).
+For an example with simple Agents, see the [TypeScript Framework README](https://github.com/kyubinokitsune-ace/ multi-atomic-agents/tree/master/clients/gpt-maa-ts) and the [TypeScript Example Agents](https://github.com/kyubinokitsune-ace/ multi-atomic-agents/tree/master/clients/gpt-maa-ts/src/test_gpt_maa_client.ts).
 
 ### 3. Usage as a command line chat tool
 
@@ -463,9 +463,3 @@ Available commands:
 ./test.sh
 ```
 
-## Articles
-
-The gpt-multi-atomic-agents framework is further described in these articles:
-
-- [Medium](https://medium.com/@mr.sean.ryan/multi-llm-based-agent-collaboration-via-dynamic-router-and-graphql-handle-composite-prompts-with-83e16a22a1cb)
-- [ReadyTensor](https://app.readytensor.ai/publications/multi-agent-collaboration-via-a-dynamic-router-orchestrator-and-graphql-handle-composite-prompts-havaB1XVCa5A)
